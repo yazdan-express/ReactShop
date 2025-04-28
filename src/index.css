@@ -1,0 +1,35 @@
+@font-face {
+  font-family: Yekan;
+  src: url('src/font/yekan-font/Yekan.eot');
+  src: url('src/font/yekan-font/Yekan.eot?#iefix') format('Yekan-opentype'),
+       url('src/font/yekan-font/Yekan.woff') format('woff'),
+       url('src/font/yekan-font/Yekan.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  direction: rtl;
+  font-family: Yekan;
+}
+
+/* .main{
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  align-items:flex-end;
+}
+.card{
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  border: 1px solid green;
+  text-align: center;
+  line-height: 150px;
+  margin-bottom: 10px;
+} */
