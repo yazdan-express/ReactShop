@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
 import useConvertNums from "../../hooks/useConvertNums";
 
-const Card = () => {
+const Card = ({title , image , price , desc}) => {
   const [isFilled, setIsFilled] = useState(false);
   const { generated, handleConvertToPersianDigits } = useConvertNums();
-  const price = 1234567890;
 
   useEffect(() => {
     handleConvertToPersianDigits(price);
@@ -19,19 +18,19 @@ const Card = () => {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.title}>
+          {title}
+      </div>
+      <div className={styles.imageContainer}>
         <img
           className={styles.img}
-          src="public/logo/802_fcbarcelona.jpg"
+          src={image}
           alt=""
         />
       </div>
       <div className={styles.desc}>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet impedit
-          iusto voluptatum voluptas aut possimus perferendis architecto in sunt
-          praesentium natus nostrum veniam, deleniti sequi eveniet, doloribus
-          totam minus ab?
+          {desc}
         </p>
       </div>
       <div className={styles.details}>
@@ -68,7 +67,7 @@ const Card = () => {
             </svg>
           )}
         </div>
-        <div>{generated} تومان</div>
+        <div>{generated} دلار</div>
       </div>
     </div>
   );

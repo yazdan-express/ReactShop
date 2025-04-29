@@ -8,28 +8,60 @@
   font-style: normal;
 }
 
+ @font-face {
+  font-family: 'icomoon';
+  src:  url('src/font/icomoon/icomoon.eot?k40fvq');
+  src:  url('src/font/icomoon/icomoon.eot?k40fvq#iefix') format('embedded-opentype'),
+    url('src/font/icomoon/icomoon.ttf?k40fvq') format('truetype'),
+    url('src/font/icomoon/icomoon.woff?k40fvq') format('woff'),
+    url('src/font/icomoon/icomoon.svg?k40fvq#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  speak: never; 
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering ===========*/ 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home,
+.icon-cart,
+.icon-phone
+{
+  font-family: icomoon;
+  margin-right: 5px;
+}
+
+
+.icon-home:before {
+  content: "\e900";
+} 
+.icon-cart:before {
+  content: "\e93a";
+}
+.icon-phone:before {
+  content: "\e942";
+}
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body{
+  background-color: #d9d9d9;
   direction: rtl;
   font-family: Yekan;
 }
 
-/* .main{
-  display: flex;
-  justify-content: space-around;
-  flex-flow: row wrap;
-  align-items:flex-end;
-}
-.card{
-  width: 150px;
-  height: 150px;
-  background-color: red;
-  border: 1px solid green;
-  text-align: center;
-  line-height: 150px;
-  margin-bottom: 10px;
-} */
+

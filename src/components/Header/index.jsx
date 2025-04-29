@@ -1,13 +1,22 @@
 import React from "react";
 import styles from "./index.module.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className={styles.container}>
       <div className={styles.options}>
-        <a href="" className={styles.option}>خانه</a>
-        <a href="" className={styles.option}>سبد خرید</a>
-        <a href="" className={styles.option}>تماس با ما</a>
+        <Link to="/" className={styles.option}>
+          خانه<span className="icon-home"></span>
+        </Link>
+
+        <Link to="" className={styles.option}>
+          سبد خرید<span className="icon-cart"></span>
+        </Link>
+
+        <Link to="" className={styles.option}>
+          تماس با ما<span class="icon-phone"></span>
+        </Link>
       </div>
       <div className={styles.title}>
         <img

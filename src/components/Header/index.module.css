@@ -7,6 +7,7 @@
     padding: 1.8rem;
     border-bottom: 1px solid #d9d9d9;
     position: sticky;
+    z-index: 2;
     top: 0;
     right: 0;
 }
@@ -18,7 +19,8 @@
     flex-wrap: wrap;
 }
 
-@media screen and (max-width:900px){
+
+@media screen and (max-width:980px){
     .options{
         width: 50%;
         display: flex;
@@ -26,6 +28,8 @@
         flex-wrap: wrap;
     }
 } 
+
+
 
 .option{
     text-decoration: none;
@@ -38,7 +42,6 @@
     display: flex;
     justify-content: space-evenly;
     text-align: center;
-    line-height: 50px;
 }
 
 .logo{
@@ -46,6 +49,7 @@
     height: 50px;
     border: 1px solid #d9d9d9;
     border-radius: 50%;
+    transform: translate(0 , -9.295px);
 }
 
 .inTitle{
