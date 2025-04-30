@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Card from "../Card";
 import styles from "./index.module.css";
+import { FavCount } from "../Layout";
+
 const Cards = () => {
   const [products, setProducts] = useState([]);
+  
+  
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")

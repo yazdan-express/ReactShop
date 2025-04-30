@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./index.module.css";
 import useConvertNums from "../../hooks/useConvertNums";
+import { FavCount } from "../Layout";
 
-const Card = ({title , image , price , desc}) => {
+const Card = ({ title, image, price, desc }) => {
   const [isFilled, setIsFilled] = useState(false);
   const { generated, handleConvertToPersianDigits } = useConvertNums();
+  const { setFavouritedCount } = useContext(FavCount);
 
   useEffect(() => {
     handleConvertToPersianDigits(price);
@@ -12,31 +14,33 @@ const Card = ({title , image , price , desc}) => {
 
 
   const handleFill = () => {
-    setIsFilled(!isFilled);
-  }
+    const newIsFilled = !isFilled;
+    setIsFilled(newIsFilled);
+    if(newIsFilled === true)
+    {
+      setFavouritedCount(prev => prev + 1);
+    }
+    else
+    {
+      setFavouritedCount(prev => prev - 1);
+    }
+  };
 
+  
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}>
-          {title}
-      </div>
+      <div className={styles.title}>{title}</div>
       <div className={styles.imageContainer}>
-        <img
-          className={styles.img}
-          src={image}
-          alt=""
-        />
+        <img className={styles.img} src={image} alt="" />
       </div>
       <div className={styles.desc}>
-        <p>
-          {desc}
-        </p>
+        <p>{desc}</p>
       </div>
       <div className={styles.details}>
         <div className={styles.svg}>
-          {!isFilled ? (
-            <svg  
+          {isFilled === false ? (
+            <svg
               version="1.1"
               id="Layer_1"
               x="0px"
@@ -55,8 +59,8 @@ const Card = ({title , image , price , desc}) => {
               x="0px"
               y="0px"
               viewBox="0 0 122.88 107.41"
-              style={{fill:'red'}}
-              onClick={handleFill}  
+              style={{ fill: "red" }}
+              onClick={handleFill}
             >
               <g>
                 <path
