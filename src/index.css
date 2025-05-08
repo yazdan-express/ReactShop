@@ -1,67 +1,74 @@
 @font-face {
   font-family: Yekan;
-  src: url('src/font/yekan-font/Yekan.eot');
-  src: url('src/font/yekan-font/Yekan.eot?#iefix') format('Yekan-opentype'),
-       url('src/font/yekan-font/Yekan.woff') format('woff'),
-       url('src/font/yekan-font/Yekan.ttf') format('truetype');
+  src: url("src/font/yekan-font/Yekan.eot");
+  src: url("src/font/yekan-font/Yekan.eot?#iefix") format("Yekan-opentype"),
+    url("src/font/yekan-font/Yekan.woff") format("woff"),
+    url("src/font/yekan-font/Yekan.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
- @font-face {
+
+@font-face {
   font-family: 'icomoon';
-  src:  url('src/font/icomoon/icomoon.eot?k40fvq');
-  src:  url('src/font/icomoon/icomoon.eot?k40fvq#iefix') format('embedded-opentype'),
-    url('src/font/icomoon/icomoon.ttf?k40fvq') format('truetype'),
-    url('src/font/icomoon/icomoon.woff?k40fvq') format('woff'),
-    url('src/font/icomoon/icomoon.svg?k40fvq#icomoon') format('svg');
+  src:  url('src/font/icomoon/icomoon.eot?hrfhj3');
+  src:  url('src/font/icomoon/icomoon.eot?hrfhj3#iefix') format('embedded-opentype'),
+    url('src/font/icomoon/icomoon.ttf?hrfhj3') format('truetype'),
+    url('src/font/icomoon/icomoon.woff?hrfhj3') format('woff'),
+    url('src/font/icomoon/icomoon.svg?hrfhj3#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-  speak: never; 
+
+
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: "icomoon" !important;
+  speak: never;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
   line-height: 1;
 
-  /* Better Font Rendering ===========*/ 
+  /* Better Font Rendering ===========*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .icon-home,
 .icon-cart,
-.icon-phone
-{
-  font-family: icomoon;
+.icon-phone,
+.icon-search {
+  
   margin-right: 5px;
 }
 
-
 .icon-home:before {
   content: "\e900";
-} 
+}
 .icon-cart:before {
   content: "\e93a";
 }
 .icon-phone:before {
   content: "\e942";
 }
-
+.icon-search:before {
+  content: "\e986";
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
+
+html,
+body {
   background-color: #d9d9d9;
   direction: rtl;
   font-family: Yekan;
+  height: 100%;
 }
-
-

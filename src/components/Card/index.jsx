@@ -1,32 +1,33 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./index.module.css";
 import useConvertNums from "../../hooks/useConvertNums";
-import { FavCount } from "../Layout";
+import { Fav } from "../Layout";
+import { toast } from "react-toastify";
 
-const Card = ({ title, image, price, desc }) => {
-  const [isFilled, setIsFilled] = useState(false);
+const Card = ({ id , title, image, price, desc }) => {
   const { generated, handleConvertToPersianDigits } = useConvertNums();
-  const { setFavouritedCount } = useContext(FavCount);
+  const { setFavouritedCount, favouritedProducts, setFavouritedProducts } =
+    useContext(Fav);
+
+  const isFilled = favouritedProducts.includes(id);
 
   useEffect(() => {
     handleConvertToPersianDigits(price);
   }, []);
 
-
   const handleFill = () => {
-    const newIsFilled = !isFilled;
-    setIsFilled(newIsFilled);
-    if(newIsFilled === true)
-    {
-      setFavouritedCount(prev => prev + 1);
-    }
-    else
-    {
-      setFavouritedCount(prev => prev - 1);
+    if (isFilled) {
+      setFavouritedCount((prev) => prev - 1);
+      setFavouritedProducts((prev) => prev.filter((item) => item !== id));
+      const toastTitle = `...${title.substr(0 , 9)}`;
+      toast.warning(`محصول با نام ${toastTitle} از سبد خرید حذف شد.`)
+    } else {
+      setFavouritedCount((prev) => prev + 1);
+      setFavouritedProducts((prev) => [...prev, id]);
+      const toastTitle = `...${title.substr(0 , 9)}`;
+      toast.success(`محصول با نام ${toastTitle} به سبد خرید اضافه شد.`)
     }
   };
-
-  
 
   return (
     <div className={styles.container}>

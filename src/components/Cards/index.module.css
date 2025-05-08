@@ -5,4 +5,10 @@
     flex-flow:row wrap;
     align-items:center;
     padding: 1rem;
+    position: relative;
+}
+
+.loading{
+    text-align: center;
+    line-height: 457px;
 }
