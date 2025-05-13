@@ -8,6 +8,7 @@ import { Bounce, ToastContainer } from "react-toastify";
 
 const App = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [categoryItems , setCategoryItems] = useState([]);
   return (
     <>
       <BrowserRouter>
@@ -24,10 +25,10 @@ const App = () => {
           theme="light"
           transition={Bounce}
         />
-        <Layout setFilteredProducts={setFilteredProducts}>
+        <Layout setFilteredProducts={setFilteredProducts} setCategoryItems={setCategoryItems}>
           <Routes>
             <Route
-              element={<Cards filteredProducts={filteredProducts} />}
+              element={<Cards filteredProducts={filteredProducts} categoryItems={categoryItems} />}
               path="/"
             />
             <Route element={<Cart setFilteredProducts={setFilteredProducts} />} path="/cart" />

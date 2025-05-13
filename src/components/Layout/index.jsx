@@ -6,7 +6,7 @@ import styles from './index.module.css'
 export const Fav = createContext();
 
 
-const Layout = ({children , setFilteredProducts}) => {
+const Layout = ({children , setFilteredProducts , setCategoryItems}) => {
   const [products, setProducts] = useState([]);
   const [favouritedCount, setFavouritedCount] = useState(0);
   const [favouritedProducts, setFavouritedProducts] = useState([]);
@@ -14,7 +14,7 @@ const Layout = ({children , setFilteredProducts}) => {
     <div className={styles.appContainer}>
     <Fav.Provider value={{products , setProducts , favouritedCount , setFavouritedCount , favouritedProducts , setFavouritedProducts}}> 
       <header className={styles.pos}>
-        <Header setFilteredProducts={setFilteredProducts}/>
+        <Header setFilteredProducts={setFilteredProducts} setCategoryItems={setCategoryItems}/>
       </header>
       <main>
         {children}

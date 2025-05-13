@@ -1,16 +1,28 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./index.module.css";
-import { Link, useLocation } from "react-router-dom";
+import { data, Link, useLocation } from "react-router-dom";
 import useConvertNums from "../../hooks/useConvertNums";
 import { Fav } from "../Layout";
 
-const Header = ({setFilteredProducts}) => {
+const Header = ({setFilteredProducts , setCategoryItems}) => {
 
   const { generated, handleConvertToPersianDigits } = useConvertNums();
   const {products ,favouritedCount} = useContext(Fav);
   const [isSearchClicked , setIsSearchClicked] = useState(false);
+  const [isDropdownClicked , setIsDropdownClicked] = useState(false);
+  const [category , setCategory] = useState('');
+  const cats = useRef(["کالای الکترونیک" , "بدلیجات" , "لباس مردانه" ,"لباس زنانه"]); 
+  const catsmain = useRef(["electronics","jewelery","men's clothing","women's clothing"]); 
   const inputRef = useRef('');
   const location = useLocation();
+
+  useEffect(() => {
+    fetch(`https://fakestoreapi.com/products/category/${category}`)
+    .then(res => res.json())
+    .then(data => {
+      setCategoryItems(data);
+    })
+  } , [category]);
 
   useEffect(() => {
       handleConvertToPersianDigits(favouritedCount);
@@ -45,10 +57,47 @@ const Header = ({setFilteredProducts}) => {
     inputRef.current.value = "";
   }
 
+  const handleDropdownClick = () => {
+    setIsDropdownClicked(prev => !prev);
+  }
+
+  const handleCatClick = (itemIndex) => {
+    const cat = catsmain.current[itemIndex];
+    setCategory(cat);
+    setIsDropdownClicked(false);
+  } 
+
+  const handleResetCat = () => {
+    setCategoryItems([]);
+    setIsDropdownClicked(false);
+  }
+
   return (
     <>
-    <div className={styles.container}>
+    
+    <div className={styles.container}  >
+      {location.pathname === '/' && (
+      <div className={styles.cats} style={!isDropdownClicked ? {opacity : 0 , visibility : 'hidden'} : {opacity : 1 , visibility : 'visible'}}>
+        <ul style={{listStyle : 'none' , width : '10%'}}>
+          <li>
+            دسته بندی ها
+            <ul style={{listStyle : 'circle' , listStylePosition : 'inside' , cursor : 'pointer'}}>
+              <li onClick={handleResetCat} >تمام محصولات</li>
+              {cats.current.map((item , index) => <li key={index} onClick={() => handleCatClick(index)}>{item}</li>)}
+            </ul>
+          </li>
+        </ul>
+      </div>
+      )}
       <div className={styles.options}>
+        {location.pathname === '/' && (
+        <div className={styles.dropdown} onClick={handleDropdownClick}>
+          <div className={`${styles.line} ${isDropdownClicked ? styles.line1active : ''}`}></div>
+          <div className={`${styles.line} ${isDropdownClicked ? styles.line2active : ''}`}></div>
+          <div className={`${styles.line} ${isDropdownClicked ? styles.line3active : ''}`}></div>
+        </div>
+        )}
+
         <Link to="/" className={styles.option}>
           خانه<span className="icon-home"></span>
         </Link>
